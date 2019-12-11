@@ -4,7 +4,7 @@ set:
   fileContent: 1
 rules:
   - method: GET
-    path: /get
+    path: /get?a=1
     follow_redirects: false
     expression: |
       response.status == 200

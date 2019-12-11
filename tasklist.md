@@ -1,4 +1,10 @@
 - [x] 解析YAML
 - [x] HTTP发包
-- [ ] ​并发
-- [ ] ​flag
+- [ ] ​CEL表达式匹配
+- [ ] ​search提取
+- [ ] ​302跳转
+- [ ] ​自定义变量set
+- [ ] ​reverse反连平台
+- [x] goroutine​并发
+- [x] flag传参​
+- [ ] ​批量获取目标
