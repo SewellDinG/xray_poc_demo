@@ -38,7 +38,7 @@ type Detail struct {
 	Links  []string `yaml:"links"`
 }
 
-func (p *Poc) GetPoc(path string) *Poc {
+func (p *Poc) PocGetter(path string) *Poc {
 	yamlFile, err := ioutil.ReadFile(path)
 	if err != nil {
 		log.Fatalf("yaml_file Get err: %#v\n", err)

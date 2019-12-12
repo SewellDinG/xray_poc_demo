@@ -7,7 +7,7 @@ rules:
     path: /get?a=1
     follow_redirects: false
     expression: |
-      response.status == 200
+      response.status == 200 && response.content_type.contains('json')
   - method: POST
     path: /post
     headers:
@@ -16,7 +16,7 @@ rules:
     body: b=2&c=3
     follow_redirects: false
     expression: |
-      response.status == 200 && response.body.bcontains(bytes(fileContent))
+      response.status == 200 && response.body.bcontains(b'Example Domain')
 detail:
   author: j4ckzh0u(https://github.com/j4ckzh0u)
   links:
