@@ -34,8 +34,8 @@ func Contains(s1, s2 string) bool {
 }
 
 // 判断一个b1是否包含b2，返回bool类型结果。与contains不同的是，bcontains是字节流（bytes）的查找
-func Bcontains(s1, s2 string) bool {
-	return strings.Contains(string([]byte(s1)), string([]byte(s2)))
+func Bcontains(s1, s2 []byte) bool {
+	return strings.Contains(string(s1), string(s2))
 }
 
 // 使用正则表达式s1来匹配s2，返回bool类型匹配结果

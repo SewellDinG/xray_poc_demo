@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"strconv"
 	"strings"
 )
 
@@ -44,9 +45,30 @@ func ExprHandler(expr string) *Expr {
 	return exprHandled
 }
 
-// 模式匹配???
+// 模式匹配
 func ExprMatcher(resp *Response, expr *Expr) bool {
 	fmt.Printf("%+v\n", resp)
 	fmt.Printf("%+v\n", expr)
-	return false
+	// 处理的太冗余了...
+	// header
+	respHeader := fmt.Sprint(resp.Headers)
+	exprContentType := strings.Split(expr.ContentType, "'")
+	var exprContent string
+	if len(exprContentType) > 1 {
+		exprContent = exprContentType[1]
+	}
+	// body
+	exprBodyList := strings.Split(expr.Body, "'")
+	var exprBody string
+	if len(exprBodyList) > 1 {
+		exprBody = exprBodyList[1]
+	}
+	if strconv.Itoa(resp.Status) != expr.Status {
+		return false
+	} else if !Bcontains([]byte(respHeader), []byte(exprContent)) {
+		return false
+	} else if !Bcontains(resp.Body, []byte(exprBody)) {
+		return false
+	}
+	return true
 }

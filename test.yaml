@@ -16,7 +16,7 @@ rules:
     body: b=2&c=3
     follow_redirects: false
     expression: |
-      response.status == 200 && response.body.bcontains(b'Example Domain')
+      response.status == 200 && response.body.bcontains('Example Domain')
 detail:
   author: j4ckzh0u(https://github.com/j4ckzh0u)
   links:
