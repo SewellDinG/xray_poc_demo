@@ -23,11 +23,11 @@ func ExprHandler(expr string) *Expr {
 	expSliceStep1 := strings.Split(expr, "&&")
 	for _, v := range expSliceStep1 {
 		v = strings.TrimSpace(v)
-		fmt.Println("|--------", v)
+		//fmt.Println("|--------", v)
 		expSliceStep2 := strings.FieldsFunc(v, splitFun)
-		for _, vv := range expSliceStep2 {
-			fmt.Println("   |*****", strings.TrimSpace(vv))
-		}
+		//for _, vv := range expSliceStep2 {
+		//	fmt.Println("   |*****", strings.TrimSpace(vv))
+		//}
 		// 未使用resp字段
 		m[strings.TrimSpace(expSliceStep2[1])] = strings.TrimSpace(expSliceStep2[2])
 	}
@@ -47,8 +47,8 @@ func ExprHandler(expr string) *Expr {
 
 // 模式匹配
 func ExprMatcher(resp *Response, expr *Expr) bool {
-	fmt.Printf("%+v\n", resp)
-	fmt.Printf("%+v\n", expr)
+	fmt.Printf("* resp: %+v %+v\n", resp.Status, resp.Headers)
+	fmt.Printf("* expr: %+v\n", expr)
 	// 处理的太冗余了...
 	// header
 	respHeader := fmt.Sprint(resp.Headers)
@@ -63,7 +63,7 @@ func ExprMatcher(resp *Response, expr *Expr) bool {
 	if len(exprBodyList) > 1 {
 		exprBody = exprBodyList[1]
 	}
-	if strconv.Itoa(resp.Status) != expr.Status {
+	if expr.Status != "" && strconv.Itoa(resp.Status) != expr.Status {
 		return false
 	} else if !Bcontains([]byte(respHeader), []byte(exprContent)) {
 		return false

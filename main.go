@@ -8,7 +8,7 @@ import (
 
 //var wg sync.WaitGroup
 
-var targetURL = flag.String("target", "https://postman-echo.com", "Input Target URL")
+var targetURL = flag.String("url", "https://postman-echo.com", "Input Target URL")
 var pocPath = flag.String("poc", "test.yaml", "Input POC file")
 
 func main() {
@@ -28,6 +28,7 @@ func main() {
 			ruleHeaders := rule.Headers
 			ruleBody := rule.Body
 			ruleExpr := rule.Expression
+			fmt.Printf("* rule:%+v\n", rule)
 			// 判断请求类型
 			var resp *Response
 			switch rule.Method {
@@ -46,9 +47,9 @@ func main() {
 			ruleExprHandled := ExprHandler(ruleExpr)
 			ruleExprMatchResult := ExprMatcher(resp, ruleExprHandled)
 			if ruleExprMatchResult {
-				fmt.Println("hack success...")
+				fmt.Println("* Vuln:", poc.Name, "\n* Target:", target)
 			} else {
-				fmt.Println("hack failure...")
+				fmt.Println("* Failure...")
 			}
 		}
 	}()

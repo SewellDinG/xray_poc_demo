@@ -30,6 +30,9 @@ func HttpReqer(url, httpMethod, ruleBody string, ruleHeaders Headers) *Response 
 		ruleHeader := StructToMap(ruleHeaders)
 		for contentTypeKey, contentTypeValue := range ruleHeader {
 			//fmt.Println(contentTypeKey, "--------", contentTypeValue)
+			if contentTypeKey == "ContentType"{
+				contentTypeKey = "Content-Type"
+			}
 			req.Header.Set(contentTypeKey, contentTypeValue)
 		}
 	}
