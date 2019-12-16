@@ -1,3 +1,23 @@
+长亭科技出品的[xray](https://github.com/chaitin/xray)真心👍，🐂🍺!!!!!!
+
+正好学了Golang，复现了下xray的poc功能模块，其中提到的Google的cel-go表达式没有摸懂，使用笨拙的方法来匹配。
+
+## Tasklist
+
+- [x] 解析YAML
+- [x] HTTP发包
+- [x] 表达式预处理
+- [x] 模式匹配
+- [x] 常用函数
+- [x] goroutine​并发
+- [x] flag传参​
+- [ ] 批量获取目标
+- [ ] 302跳转
+- [ ] 自定义变量set
+- [ ] reverse反连平台
+
+## Test
+
 漏洞环境：[thinkphp/5.0.23-rce](https://vulhub.org/#/environments/thinkphp/5.0.23-rce/)
 
 POC：[thinkphp5023-method-rce.yml](https://github.com/chaitin/xray/blob/master/pocs/thinkphp5023-method-rce.yml)
@@ -14,4 +34,3 @@ POC：[thinkphp5023-method-rce.yml](https://github.com/chaitin/xray/blob/master/
 * Vuln: poc-yaml-thinkphp5023-method-rce
 * Target: http://34.xxx.69.xxx:8080
 ```
-
